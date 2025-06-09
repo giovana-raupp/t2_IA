@@ -125,8 +125,4 @@ python tests/test_basic.py
 
 ## Autores
 
-[SEUS NOMES AQUI]
-
-## Data de Entrega
-
-[VERIFICAR CRONOGRAMA DA DISCIPLINA] 
+Alice Colares, Mykelly Barros, Giovana Raupp, Samara Tavares
