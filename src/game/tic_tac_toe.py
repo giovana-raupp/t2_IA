@@ -27,7 +27,15 @@ class TicTacToe:
         Returns:
             success: se a jogada foi válida
         """
-        pass
+        if not 0 <= position < 9:
+            return False
+
+        if self.board[position] != 0:
+            return False
+
+        self.board[position] = player
+        self.current_player = -player
+        return True
     
     def is_valid_move(self, position):
         """
@@ -45,7 +53,24 @@ class TicTacToe:
         Returns:
             winner: 1, -1, 0 (empate) ou None (jogo continua)
         """
-        pass
+        win_combinations = [
+            (0, 1, 2), (3, 4, 5), (6, 7, 8),  # linhas
+            (0, 3, 6), (1, 4, 7), (2, 5, 8),  # colunas
+            (0, 4, 8), (2, 4, 6)              # diagonais
+        ]
+
+        for a, b, c in win_combinations:
+            if self.board[a] == self.board[b] == self.board[c] != 0:
+                self.winner = int(self.board[a])
+                self.game_over = True
+                return self.winner
+
+        if 0 not in self.board:
+            self.winner = 0
+            self.game_over = True
+            return 0
+
+        return None
     
     def is_game_over(self):
         """
