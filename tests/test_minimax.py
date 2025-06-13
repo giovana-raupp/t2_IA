@@ -15,7 +15,7 @@ class TestMinimaxAlgorithm(unittest.TestCase):
         player = MinimaxPlayer(difficulty='hard', symbol='O')
         move = player.get_move(board_state)
         self.assertEqual(move, 7)
-        
+
     def test_evaluate_board_results(self):
         player = MinimaxPlayer(symbol='X')
 
