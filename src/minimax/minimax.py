@@ -83,8 +83,8 @@ class MinimaxPlayer:
         result = self.evaluate_board(board)
 
         if result is not None:
-            # Resultado do ponto de vista do jogador do minimax
-            return result * player_val
+            # Pontuação já está no ponto de vista do jogador
+            return result
 
         if is_maximizing:
             best_score = -float('inf')
@@ -124,9 +124,11 @@ class MinimaxPlayer:
             (0, 4, 8), (2, 4, 6)              # diagonais
         ]
 
+        player_val = 1 if self.symbol == 'X' else -1
+
         for a, b, c in win_combinations:
             if board[a] == board[b] == board[c] != 0:
-                return board[a]
+                return 1 if board[a] == player_val else -1
 
         if 0 not in board:
             return 0
