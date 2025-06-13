@@ -78,7 +78,12 @@ class TicTacToe:
         Returns:
             game_over: boolean
         """
-        pass
+        if self.game_over:
+            return True
+
+        # Atualiza estado verificando vitória ou empate
+        result = self.check_winner()
+        return result is not None
     
     def get_available_moves(self):
         """

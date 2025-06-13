@@ -46,5 +46,31 @@ class TestTicTacToeMoves(unittest.TestCase):
         ]
         self.assertEqual(game.check_winner(), 0)
 
+    def test_is_game_over_states(self):
+        # Vitória
+        game = TicTacToe()
+        game.board = [1, 1, 1, 0, 0, 0, 0, 0, 0]
+        self.assertTrue(game.is_game_over())
+        self.assertEqual(game.winner, 1)
+
+        # Empate
+        game = TicTacToe()
+        game.board = [
+            1, -1, 1,
+            1, -1, -1,
+            -1, 1, 1
+        ]
+        self.assertTrue(game.is_game_over())
+        self.assertEqual(game.winner, 0)
+
+        # Jogo continua
+        game = TicTacToe()
+        game.board = [
+            1, 0, 0,
+            0, -1, 0,
+            0, 0, 0
+        ]
+        self.assertFalse(game.is_game_over())
+
 if __name__ == '__main__':
     unittest.main()
