@@ -41,11 +41,27 @@ class MLP:
         Returns:
             output: saída da rede (probabilidades para cada posição)
         """
-        pass
+        if self.weights_input_hidden is None or self.weights_hidden_output is None:
+            raise ValueError("Network weights not initialized")
+
+        # Garante que a entrada esteja no formato correto
+        x = np.asarray(input_data).reshape(-1)
+        if x.size != self.input_size:
+            raise ValueError("Invalid input size")
+
+        # Camada oculta
+        hidden_input = np.dot(x, self.weights_input_hidden) + self.bias_hidden
+        hidden_output = self.sigmoid(hidden_input)
+
+        # Camada de saída
+        output_input = np.dot(hidden_output, self.weights_hidden_output) + self.bias_output
+        output = self.sigmoid(output_input)
+
+        return output
     
     def sigmoid(self, x):
         """Função de ativação sigmoid"""
-        pass
+        return 1 / (1 + np.exp(-x))
     
     def get_best_move(self, board_state):
         """
