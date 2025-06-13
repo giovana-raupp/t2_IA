@@ -27,7 +27,15 @@ class TicTacToe:
         Returns:
             success: se a jogada foi válida
         """
-        pass
+        if not 0 <= position < 9:
+            return False
+
+        if self.board[position] != 0:
+            return False
+
+        self.board[position] = player
+        self.current_player = -player
+        return True
     
     def is_valid_move(self, position):
         """
